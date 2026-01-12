@@ -1,6 +1,7 @@
 Easy Notes
 A professional, containerized full-stack application for managing notes with Gemini AI-powered semantic search. Find your thoughts by meaning, not just keywords.
 
+
 Quick Start
 
 Clone & Navigate:
@@ -9,6 +10,7 @@ git clone https://github.com/adityasoni04/easy-notes.git
 
 cd easy-notes
 
+
 Launch with Docker:
 
 docker-compose up --build
@@ -16,6 +18,7 @@ docker-compose up --build
 Frontend: http://localhost:3000
 
 Backend: http://localhost:5000
+
 
 Tech Stack
 
@@ -31,6 +34,7 @@ Security: JWT authentication via HTTP-only Cookies.
 
 
 Auth Flow: Login/Register automatically sets a secure cookie; the frontend Axios instance is pre-configured to include these credentials.
+
 
 Future Improvements
 
