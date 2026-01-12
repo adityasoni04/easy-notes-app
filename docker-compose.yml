@@ -1,0 +1,39 @@
+services:
+  # 1. Database Service
+  db:
+    image: mongo:latest
+    container_name: easy-notes-db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  # 2. Backend Service
+  backend:
+    build: ./backend
+    container_name: easy-notes-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mongodb://db:27017/easy-notes?authSource=admin
+      - PORT=5000
+      - FRONTEND_URL=http://localhost:3000
+    depends_on:
+      - db
+
+  # 3. Frontend Service
+  frontend:
+    build: ./frontend
+    container_name: easy-notes-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000/api
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
