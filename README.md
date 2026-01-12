@@ -2,9 +2,11 @@ Easy Notes
 A professional, containerized full-stack application for managing notes with Gemini AI-powered semantic search. Find your thoughts by meaning, not just keywords.
 
 Quick Start
+
 Clone & Navigate:
 
 git clone https://github.com/adityasoni04/easy-notes.git
+
 cd easy-notes
 
 Launch with Docker:
