@@ -1,5 +1,4 @@
-services:
-  # 1. Database Service
+ervices:
   db:
     image: mongo:latest
     container_name: easy-notes-db
@@ -9,7 +8,6 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  # 2. Backend Service
   backend:
     build: ./backend
     container_name: easy-notes-backend
@@ -20,12 +18,16 @@ services:
       - DATABASE_URL=mongodb+srv://adityasoni2800_db_user:3y69FwBzEeqRaRyl@cluster0.2i90tyc.mongodb.net/mydb?retryWrites=true&w=majority
       - PORT=5000
       - FRONTEND_URL=http://localhost:3000
+      - JWT_SECRET=3asyN0tesS3cr3tKey!0987654321Smarteasy
+      - GEMINI_API_KEY=AIzaSyDIrdIGRTkclaWjG4IrHvWaZdsCN5uUuiI
     depends_on:
       - db
 
-  # 3. Frontend Service
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        - NEXT_PUBLIC_API_URL=http://localhost:5000/api
     container_name: easy-notes-frontend
     restart: always
     ports:
