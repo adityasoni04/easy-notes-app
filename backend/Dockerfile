@@ -1,9 +1,8 @@
-FROM node:20-alpine
+FROM node:20-alpine3.17
 
-WORKDIR /app
+WORKDIR /src
 
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+RUN apk add --no-cache openssl1.1-compat
 
 COPY package*.json ./
 
@@ -11,8 +10,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npx prisma generate
 
-EXPOSE 3000
+EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["node", "src/index.js"]
