@@ -17,7 +17,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DATABASE_URL=mongodb://db:27017/easy-notes?authSource=admin
+      - DATABASE_URL=mongodb+srv://adityasoni2800_db_user:3y69FwBzEeqRaRyl@cluster0.2i90tyc.mongodb.net/mydb?retryWrites=true&w=majority
       - PORT=5000
       - FRONTEND_URL=http://localhost:3000
     depends_on:
